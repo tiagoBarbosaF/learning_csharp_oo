@@ -1,4 +1,5 @@
-﻿using AnyBank.Holder;
+﻿using AnyBank.Exceptions;
+using AnyBank.Holder;
 
 namespace AnyBank;
 
@@ -37,6 +38,7 @@ public class CheckingAccount
 
     Account = account;
     Holder = holder;
+    Balance = 100;
     // try
     // {
     //   OperationFee = 30 / TotalAccountsCreated;
@@ -68,7 +70,7 @@ public class CheckingAccount
     }
     else
     {
-      return false;
+      throw new InsufficientFundsException("Insufficient funds for this operation.");
     }
   }
 
